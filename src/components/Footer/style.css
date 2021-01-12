@@ -1,0 +1,22 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 1.2rem;
+  border-top: 1px solid;
+}
+
+.footer__icons a {
+  padding-left: 0.5rem;
+  color: white;
+}
+
+.footer__pages {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.footer__link {
+  color: white;
+  text-decoration: none;
+}
