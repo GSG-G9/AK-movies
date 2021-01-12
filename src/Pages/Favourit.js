@@ -5,7 +5,9 @@ class Favourit extends Component {
   render() {
     return (
       <h3>
-        <Link to="/favourit">Favourit</Link>
+        <Link to="/favourit" style={{ color: '#fff', textDecoration:'none' }}>
+          Favourit
+        </Link>
       </h3>
     );
   }
