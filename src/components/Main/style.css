@@ -1,0 +1,46 @@
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.image-container {
+    position: relative;
+    transform: transform 0.2s;
+
+  }
+
+  ul {
+    padding: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    justify-content: space-between;
+
+  }  
+ 
+li{
+    margin:0.5rem;
+    flex-direction: column;
+}  
+  
+  .image-container:hover {
+    cursor : pointer;
+    transform : scale(1.1)
+  }
+  
+  .image-container:hover .overlay {
+    opacity: 1;
+  }
+  
+  .overlay{
+    position: absolute;
+    background: rgba(0,0,0,0.8);
+    width:100%;
+    transition: 0.5s ease;
+    opacity: 0;
+    bottom: 0;
+    font-size: 20px;
+    padding: 50px;
+    text-align: center;
+  }
