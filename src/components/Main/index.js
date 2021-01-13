@@ -11,40 +11,37 @@ class Main extends React.Component {
   };
 
   componentDidMount() {
-    fetch(
-      `${API_URL}trending/movie/day?api_key=${process.env.REACT_APP_API_KEY}`
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        this.setState({
-          movies: [...data.results],
-        });
-      });
-  }
-
-  componentDidUpdate(prevPorps){
-    //   console.log(this.props.searchValue);
-      if(this.props.searchValue !== prevPorps.searchValue){
-        console.log(this.props.searchValue);
-          fetch(
-              `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-us&query=${this.props.searchValue}`
-          )
-          .then((res)=>res.json())
-          .then((data) =>{
-              console.log(data.results);
-              this.setState({
-                  movies:data.results
-              })
+    if(this.props.searchValue !== ""){
+      fetch(
+        `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-us&query=${this.props.searchValue}`
+        )
+        .then((res)=>res.json())
+        .then((data) =>{
+          console.log(data.results);
+          this.setState({
+            movies:data.results
           })
+        })
+      }else {
+        fetch(
+          `${API_URL}trending/movie/day?api_key=${process.env.REACT_APP_API_KEY}`
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            this.setState({
+              movies: [...data.results],
+            });
+          });
       }
   }
 
   render() {
     const { movies } = this.state;
+
     return (
       <div>
         <ul>
-          {movies && movies.map((movie) => (
+          {movies.length !==0 ? movies.map((movie) => (
             <li key={movie.id}>
               <img
                 src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}
@@ -55,7 +52,7 @@ class Main extends React.Component {
                 <span>{movie.vote_average}</span>
               </div>
             </li>
-          ))}
+          )): <h3>Not found</h3>}
         </ul>
       </div>
     );

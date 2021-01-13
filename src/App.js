@@ -12,7 +12,6 @@ class App extends React.Component {
   };
 
   searchInput=(value) =>{
-  console.log(value);
   if(value){
 this.setState({
   searchValue: value
