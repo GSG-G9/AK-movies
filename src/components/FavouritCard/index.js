@@ -33,7 +33,7 @@ class Main extends React.Component {
               </li>
             ))
           ) : (
-            <h3>Not found</h3>
+            <h3>No Items</h3>
           )}
         </ul>
       </div>

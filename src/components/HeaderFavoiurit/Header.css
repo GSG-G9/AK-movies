@@ -1,18 +1,21 @@
-.flex-header {
+.header {
     display: flex;
     justify-content: space-between;
-    padding: 1.2rem;
+    padding: .8rem;
     border-bottom: 1px solid;
-    color: white
+    color: white;
+    align-items: center;
 }
 
-.search {
-        display: flex;
-        padding: 10px;
-        border-radius: 8px;
-        width: 400px;
-        border: none;
-        font-size: 16px;
-        outline: none;
-        flex-direction: column;
+.header img{
+    width: 5rem;
+}
+
+
+.header__favorite{
+    color: #fff;
+    text-decoration: none;
+    padding-right: 2rem;
+    font-weight: bold;
+    font-size: 1.5rem;
 }
