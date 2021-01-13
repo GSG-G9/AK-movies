@@ -11,55 +11,55 @@ class Main extends React.Component {
   };
 
   componentDidMount() {
-    fetch(
-      `${API_URL}trending/movie/day?api_key=${process.env.REACT_APP_API_KEY}`
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        this.setState({
-          movies: [...data.results],
+      fetch(
+        `${API_URL}trending/movie/day?api_key=${process.env.REACT_APP_API_KEY}`
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          this.setState({
+            movies: data.results
+          });
         });
-      });
-  }
-
-  componentDidUpdate(prevPorps){
-    //   console.log(this.props.searchValue);
-      if(this.props.searchValue !== prevPorps.searchValue){
-        console.log(this.props.searchValue);
-          fetch(
-              `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-us&query=${this.props.searchValue}`
-          )
-          .then((res)=>res.json())
-          .then((data) =>{
-              console.log(data.results);
-              this.setState({
-                  movies:data.results
-              })
-          })
-      }
   }
 
   render() {
-    const { movies } = this.state;
     return (
       <div>
-        <ul>
-          {movies && movies.map((movie) => (
-            <li key={movie.id}>
-              <img
-                src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}
-                alt={movie.title}
+      <ul>
+        {this.props.SearchMovies.length > 0
+          ? this.props.SearchMovies.map((movie) => (
+              <Movie
+                key={movie.id}
+                poster={movie.poster_path}
+                title={movie.title}
+                vote={movie.vote_average}
               />
-              <p>{movie.title}</p>
-              <div>
-                <span>{movie.vote_average}</span>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </div>
+            ))
+          : this.state.movies.length > 0 &&
+            this.state.movies.map((movie) => (
+              <Movie
+                key={movie.id}
+                poster={movie.poster_path}
+                title={movie.title}
+                vote={movie.vote_average}
+              />
+            ))}
+      </ul>
+    </div>
     );
   }
 }
+
+const Movie = ({ poster, title, vote }) => {
+  return (
+    <li>
+      <img src={`https://image.tmdb.org/t/p/w300/${poster}`} alt={title} />
+      <p>{title}</p>
+      <div>
+        <span>{vote}</span>
+      </div>
+    </li>
+  );
+};
 
 export default Main;

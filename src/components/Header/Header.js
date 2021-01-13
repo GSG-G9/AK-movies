@@ -8,9 +8,21 @@ class Header extends Component {
     value: "",
   };
 
-  handle=(e) => {
+  handle = (e) => {
+    console.log(e.target.value);
     this.setState({ value: e.target.value });
-  }
+    if (e.target.value == "") {
+      this.props.searchInput([]);
+    } else
+      fetch(
+        `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-us&query=${e.target.value}`
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data.results);
+          this.props.searchInput(data.results);
+        });
+  };
 
   render() {
     return (
@@ -25,10 +37,9 @@ class Header extends Component {
             className="search"
             type="text"
             placeholder="Search movie..."
-            value={this.state.value}
+            value={this.props.searchWord}
             onChange={this.handle}
           />
-          <input type="button" value="Search" onClick={()=>{this.props.searchInput(this.state.value)}} />
         </div>
         <Favourit />
       </div>
