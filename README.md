@@ -5,7 +5,7 @@
 - Alaa Alser
 - Khamis Albashiti
 
-### Team Lead
+### Team Lead :-
 
 - Mohammed Flaifel
 
