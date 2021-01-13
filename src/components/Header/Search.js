@@ -11,6 +11,7 @@ class SearchForm extends Component {
           className="search"
           type="text"
           placeholder="Search movie..."
+          value
         />
       </div>
     );
