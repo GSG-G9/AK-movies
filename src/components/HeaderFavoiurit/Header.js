@@ -19,28 +19,12 @@ class Header extends Component {
           style={{ width: '8rem' }}
           src="https://i.ibb.co/WnsXTGb/movie-logo-design-text-reel-filmstrip-icons-decoration-6829232.jpg"
         />
-        <div>
-          <input
-            className="search"
-            type="text"
-            placeholder="Search movie..."
-            value={this.state.value}
-            onChange={this.handle}
-          />
-          <input
-            type="button"
-            value="Search"
-            onClick={() => {
-              this.props.searchInput(this.state.value);
-            }}
-          />
-        </div>
         <h3>
           <Link
-            to="/favourit"
+            to="/"
             style={{ color: '#fff', textDecoration: 'none' }}
           >
-            Favourit
+            Home
           </Link>
         </h3>
       </div>

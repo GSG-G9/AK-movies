@@ -1,5 +1,6 @@
 import React from "react";
 import "./style.css";
+import AddFavourite from '../ِAddFavourites/AddFavourite';
 
 const API_URL = "https://api.themoviedb.org/3/";
 const IMAGE_URL = "https://image.tmdb.org/t/p/";
@@ -39,14 +40,17 @@ class Main extends React.Component {
     const { movies } = this.state;
 
     return (
-      <div>
+      <div className='container'>
         <ul>
           {movies.length !==0 ? movies.map((movie) => (
-            <li key={movie.id}>
+            <li key={movie.id} className='image-container'>
               <img
                 src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}
                 alt={movie.title}
               />
+              <div onClick={()=>this.props.handleFavourites(movie)} className="overlay" >
+                <AddFavourite />
+              </div>
               <p>{movie.title}</p>
               <div>
                 <span>{movie.vote_average}</span>

@@ -6,11 +6,16 @@ import Footer from '../components/Footer';
 import '../App.css';
 
 const Home = (props) => {
-  const { searchInput, searchValue } = props;
+  const { searchInput, searchValue, AddFavouriteMovie, favourites } = props;
+
   return (
     <div className="App">
       <Header searchInput={searchInput} />
-      <Main searchValue={searchValue} />
+      <Main
+        searchValue={searchValue}
+        handleFavourites={AddFavouriteMovie}
+        favourites={favourites}
+      />
       <Footer />
     </div>
   );
