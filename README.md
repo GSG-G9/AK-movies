@@ -1,6 +1,6 @@
 # AK-movies
 
-Here you can vist our **[site](https://5fff5c6e8df236396f7f0707--xenodochial-northcutt-f404bc.netlify.app/)**
+Here you can visit our **[site](https://5fff5c6e8df236396f7f0707--xenodochial-northcutt-f404bc.netlify.app/)**
 
 ### Team members:-
 
